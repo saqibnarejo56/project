@@ -1,34 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=S, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examination Portal</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="home.html">Home</a>
-
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="container navbar">
+            <a class="logo" href="#home">ExamPortal</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#exams">Exams</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <h1>Welcome to My Website</h1>
-        <p>This is the home page of my website. Here you can find information about me and my projects.</p>
+
+    <main class="container">
+        <section id="home" class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Student exam management</p>
+                <h1>Secure exam registration and result tracking for every student.</h1>
+                <p>Quickly view exam schedules, register for assessments, submit attendance, and check results — all from one central portal.</p>
+                <div class="hero-actions">
+                    <a href="#exams" class="button-primary">View Exams</a>
+                    <a href="#results" class="button-secondary">Check Results</a>
+                </div>
+            </div>
+            <div class="hero-graphic">
+                <div class="status-grid">
+                    <div class="status-card">
+                        <strong>Next Exam</strong>
+                        <p>Mathematics: 28 April • 09:00 AM</p>
+                    </div>
+                    <div class="status-card">
+                        <strong>Registration</strong>
+                        <p>Open until 26 April. Confirm presence before 8 PM.</p>
+                    </div>
+                    <div class="status-card">
+                        <strong>Records</strong>
+                        <p>100% secure storage for student grades and attendance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exams" class="section">
+            <div class="section-intro">
+                <p>Manage exam details and registration with a secure portal designed for students and exam administrators.</p>
+            </div>
+            <div class="card-grid exams-panel">
+                <article class="card">
+                    <h3>Upcoming Exams</h3>
+                    <p>View the schedule of exams happening this month and plan your study sessions accordingly.</p>
+                    <ul class="list-inline">
+                        <li>Mathematics</li>
+                        <li>Physics</li>
+                        <li>Chemistry</li>
+                        <li>English</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>Exam Registration</h3>
+                    <p>Register for exams using your student ID and confirm your seat in just a few clicks.</p>
+                    <form id="login-form">
+                        <div class="input-group">
+                            <label for="login-id">Student ID</label>
+                            <input id="login-id" name="login-id" type="text" placeholder="STU2026" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="login-password">Password</label>
+                            <input id="login-password" name="login-password" type="password" placeholder="********" required />
+                        </div>
+                        <button type="submit" class="button-primary">Sign In</button>
+                        <p id="status-details"></p>
+                    </form>
+                </article>
+                <article class="card">
+                    <h3>Exam Rules</h3>
+                    <p>Keep note of the important guidelines for exam day to ensure a smooth experience.</p>
+                    <ul>
+                        <li>Arrive 15 minutes early.</li>
+                        <li>Carry student ID and admit card.</li>
+                        <li>Electronic devices are not allowed.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="results" class="section">
+            <div class="section-intro">
+                <h2>Check Your Results</h2>
+                <p>Enter your student ID to retrieve the latest exam performance details securely and instantly.</p>
+            </div>
+            <div class="results-panel">
+                <article class="panel">
+                    <h3>Result Lookup</h3>
+                    <form id="result-form">
+                        <div class="input-group">
+                            <label for="student-id">Student ID</label>
+                            <input id="student-id" name="student-id" type="text" placeholder="STU2026" required />
+                        </div>
+                        <button type="submit" class="button-primary">Show Results</button>
+                    </form>
+                </article>
+                <article class="panel">
+                    <h3>Latest Scores</h3>
+                    <div id="result-output">
+                        <p class="muted">Enter your ID to view exam results.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="section-intro">
+                <h2>Contact Administration</h2>
+                <p>Need help with your registration or exam access? Send a message and our staff will respond quickly.</p>
+            </div>
+            <div class="contact-panel">
+                <article class="panel">
+                    <h3>Contact Form</h3>
+                    <form>
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input id="name" name="name" type="text" placeholder="Your name" />
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" placeholder="you@example.com" />
+                        </div>
+                        <div class="input-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="button" class="button-secondary">Send Message</button>
+                    </form>
+                </article>
+                <article class="panel">
+                    <h3>Support Details</h3>
+                    <p><strong>Phone:</strong> +1 800 123 4567</p>
+                    <p><strong>Email:</strong> support@examportal.example</p>
+                    <p><strong>Location:</strong> 123 Education Lane, Campus City</p>
+                </article>
+            </div>
+        </section>
     </main>
-    <footer>
-        <p>&copy; 2024 My Website. All rights reserved.</p>
+
+    <footer class="footer container">
+        <p>&copy; 2026 Examination Portal. Built for secure student exam management.</p>
     </footer>
-        
+
+    <script src="script.js"></script>
 </body>
 </html>
