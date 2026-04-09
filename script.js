@@ -40,6 +40,7 @@ const chatAnswers = [
 ];
 
 function displayResults(studentId) {
+    lastViewedId = studentId;
     resultOutput.innerHTML = '';
     const filtered = sampleResults.filter(item => item.studentId.toLowerCase() === studentId.toLowerCase());
 
@@ -57,6 +58,7 @@ function displayResults(studentId) {
                 <th style="text-align:left; padding: 0.75rem 0;">Exam</th>
                 <th style="text-align:left; padding: 0.75rem 0;">Score</th>
                 <th style="text-align:left; padding: 0.75rem 0;">Status</th>
+                <th style="text-align:left; padding: 0.75rem 0;">Transcript</th>
             </tr>
         </thead>
         <tbody>
@@ -65,6 +67,7 @@ function displayResults(studentId) {
                     <td style="padding: 0.75rem 0;">${item.exam}</td>
                     <td style="padding: 0.75rem 0;">${item.score}</td>
                     <td style="padding: 0.75rem 0; color: ${item.status === 'Passed' ? '#8ce99a' : '#f94144'};">${item.status}</td>
+                    <td style="padding: 0.75rem 0;">${item.transcript || 'None'}</td>
                 </tr>
             `).join('')}
         </tbody>
@@ -118,6 +121,8 @@ if (addResultForm) {
         const exam = event.target.elements['exam-name'].value.trim();
         const score = event.target.elements['exam-score'].value.trim();
         const status = event.target.elements['exam-status'].value;
+        const transcriptFile = event.target.elements['transcript-file'].files[0];
+        const transcriptName = transcriptFile ? transcriptFile.name : '';
 
         if (!studentId || !exam || !score) {
             addResultStatus.textContent = 'Please fill all fields to add a result.';
@@ -125,8 +130,10 @@ if (addResultForm) {
             return;
         }
 
-        sampleResults.push({ studentId, exam, score, status });
-        addResultStatus.textContent = `Result added for ${studentId}: ${exam} (${score}).`;
+        sampleResults.push({ studentId, exam, score, status, transcript: transcriptName });
+        addResultStatus.textContent = transcriptName
+            ? `Result added and transcript uploaded (${transcriptName}).`
+            : `Result added for ${studentId}: ${exam} (${score}).`;
         addResultStatus.style.color = '#8ce99a';
         event.target.reset();
 
