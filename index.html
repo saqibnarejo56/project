@@ -68,18 +68,43 @@
                 <article class="card">
                     <h3>Exam Registration</h3>
                     <p>Register for exams using your student ID and confirm your seat in just a few clicks.</p>
-                    <form id="login-form">
-                        <div class="input-group">
-                            <label for="login-id">Student ID</label>
-                            <input id="login-id" name="login-id" type="text" placeholder="STU2026" required />
+                    <div class="auth-panel">
+                        <div class="auth-tabs">
+                            <button type="button" class="tab-button active" data-target="login-form">Login</button>
+                            <button type="button" class="tab-button" data-target="register-form">Register</button>
                         </div>
-                        <div class="input-group">
-                            <label for="login-password">Password</label>
-                            <input id="login-password" name="login-password" type="password" placeholder="********" required />
-                        </div>
-                        <button type="submit" class="button-primary">Sign In</button>
-                        <p id="status-details"></p>
-                    </form>
+                        <form id="login-form" class="auth-form active">
+                            <div class="input-group">
+                                <label for="login-id">Student ID</label>
+                                <input id="login-id" name="login-id" type="text" placeholder="STU2026" required />
+                            </div>
+                            <div class="input-group">
+                                <label for="login-password">Password</label>
+                                <input id="login-password" name="login-password" type="password" placeholder="********" required />
+                            </div>
+                            <button type="submit" class="button-primary">Sign In</button>
+                        </form>
+                        <form id="register-form" class="auth-form">
+                            <div class="input-group">
+                                <label for="register-id">Student ID</label>
+                                <input id="register-id" name="register-id" type="text" placeholder="STU2026" required />
+                            </div>
+                            <div class="input-group">
+                                <label for="register-email">Email</label>
+                                <input id="register-email" name="register-email" type="email" placeholder="you@example.com" required />
+                            </div>
+                            <div class="input-group">
+                                <label for="register-password">Password</label>
+                                <input id="register-password" name="register-password" type="password" placeholder="Create a password" required />
+                            </div>
+                            <div class="input-group">
+                                <label for="register-confirm">Confirm Password</label>
+                                <input id="register-confirm" name="register-confirm" type="password" placeholder="Repeat password" required />
+                            </div>
+                            <button type="submit" class="button-primary">Create Account</button>
+                        </form>
+                        <p id="auth-status"></p>
+                    </div>
                 </article>
                 <article class="card">
                     <h3>Exam Rules</h3>
@@ -115,6 +140,88 @@
                         <p class="muted">Enter your ID to view exam results.</p>
                     </div>
                 </article>
+                <article class="panel">
+                    <h3>Add Result</h3>
+                    <form id="add-result-form">
+                        <div class="input-group">
+                            <label for="new-student-id">Student ID</label>
+                            <input id="new-student-id" name="new-student-id" type="text" placeholder="STU2026" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="exam-name">Exam</label>
+                            <input id="exam-name" name="exam-name" type="text" placeholder="Mathematics" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="exam-score">Score</label>
+                            <input id="exam-score" name="exam-score" type="text" placeholder="92%" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="exam-status">Status</label>
+                            <select id="exam-status" name="exam-status">
+                                <option value="Passed">Passed</option>
+                                <option value="Failed">Failed</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="button-primary">Add Result</button>
+                    </form>
+                    <p id="add-result-status"></p>
+                </article>
+                <article class="panel">
+                    <h3>Send Results Anywhere</h3>
+                    <form id="send-results-form">
+                        <div class="input-group">
+                            <label for="send-student-id">Student ID</label>
+                            <input id="send-student-id" name="send-student-id" type="text" placeholder="STU2026" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="send-target">Send To (Email or Phone)</label>
+                            <input id="send-target" name="send-target" type="text" placeholder="student@example.com or +123456789" required />
+                        </div>
+                        <button type="submit" class="button-secondary">Send Results</button>
+                    </form>
+                    <p id="send-status"></p>
+                </article>
+            </div>
+        </section>
+
+        <section id="support" class="section">
+            <div class="section-intro">
+                <h2>Support Chat & FAQ</h2>
+                <p>Get immediate help with common questions or speak to our support assistant for portal guidance.</p>
+            </div>
+            <div class="card-grid">
+                <article class="panel chat-panel">
+                    <h3>Support Chat</h3>
+                    <div class="chat-window" id="chat-window">
+                        <div class="chat-start">Hello! Ask me anything about registration, exams, or results.</div>
+                    </div>
+                    <form id="chat-form" class="chat-input-area">
+                        <input id="chat-message" type="text" placeholder="Type your question..." required />
+                        <button type="submit" class="button-primary">Send</button>
+                    </form>
+                </article>
+                <article class="panel faq-panel">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button type="button" class="faq-question">How do I register for an exam?</button>
+                            <div class="faq-answer"><p>Switch to the register tab, fill in your details, and submit the form to create your exam account.</p></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button type="button" class="faq-question">How can I view my exam results?</button>
+                            <div class="faq-answer"><p>Use the result lookup section and enter your student ID to reveal your latest scores.</p></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button type="button" class="faq-question">What documents do I need for exam day?</button>
+                            <div class="faq-answer"><p>Bring your student ID card and admit slip, and arrive at least 15 minutes before the exam begins.</p></div>
+                        </div>
+                        <div class="accordion-item">
+                            <button type="button" class="faq-question">Who can I contact for support?</button>
+                            <div class="faq-answer"><p>Use the support chat or contact details below to reach our administration team during business hours.</p></div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -144,9 +251,9 @@
                 </article>
                 <article class="panel">
                     <h3>Support Details</h3>
-                    <p><strong>Phone:</strong> +1 800 123 4567</p>
-                    <p><strong>Email:</strong> support@examportal.example</p>
-                    <p><strong>Location:</strong> 123 Education Lane, Campus City</p>
+                    <p><strong>Phone:</strong> 03012930907</p>
+                    <p><strong>Email:</strong> univer@examportal.example</p>
+                    <p><strong>Location:</strong> 123 Education Lane, Campus City  Karachi</p>
                 </article>
             </div>
         </section>
